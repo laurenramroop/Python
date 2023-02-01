@@ -1,0 +1,21 @@
+#Checks if a sudoku board is valud (not necessarily solvable) and returns true if it's valid
+
+def isValidSudoku(board):
+        row = [set() for x in range(9)]
+        col = [set() for x in range(9)]
+        subsquare = [[set() for x in range(3)] for y in range(3)]
+        
+        for x in range(9):
+            for y in range(9):
+                cellVal = board[x][y]
+                if cellVal == ".":
+                    continue
+                #if number in spot is the same as a number in a row or column or repeat in subsquare
+                if cellVal in rows[x] or cellVal in columns[y] or cellVal in subsquare[x//3][y//3]:
+                    return False
+
+                row[x].add(cell)
+                col[y].add(cellVal)
+                subsquare[x//3][y//3].add(cellVal)
+        
+        return True
